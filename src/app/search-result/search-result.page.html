@@ -13,7 +13,7 @@
 
     <ion-slides pager="true" [options]="slideOpts">
 
-       <ion-slide *ngFor="let sprite of details.images | slice:0:-2"><!--Slice pipe is used as the last two items from details.images aren't URL's and are hence displayed as missing images-->
+       <ion-slide *ngFor="let sprite of details.images | slice:0:-2"><!-- Slice pipe is used as the last two items from details.images aren't URL's and are hence displayed as missing images -->
         <img [src]="sprite" style="height:250px;">
       </ion-slide>
       
