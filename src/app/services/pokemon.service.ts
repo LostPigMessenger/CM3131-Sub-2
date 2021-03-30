@@ -20,7 +20,7 @@ export class PokemonService {
     }),
     map(pokemon => {
       return pokemon.map((poke, index) => {
-         poke.image = this.getPokeImage(index + offset + 1); //This gives us the pokemon sprite url. +1 since the pokemon array begins at 0 but the sprites URL begins at 1
+         poke.image = this.getPokeImage(index + offset + 1); //This gives us the pokemon sprite url according to the pokemon index. +1 since the pokemon array begins at 0 but the sprites URL begins at 1
          poke.pokeIndex = offset + index + 1;
          return poke;
       });
@@ -34,6 +34,7 @@ export class PokemonService {
     return `${this.imageUrl}${index}.png`;
   }
 
+  
   findPokemon(search) {
     return this.http.get(`${this.baseUrl}/pokemon/${search}`).pipe(
       map(pokemon => {

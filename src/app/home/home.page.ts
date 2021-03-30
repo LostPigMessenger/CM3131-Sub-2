@@ -30,7 +30,6 @@ export class HomePage implements OnInit {
  
     if (value == '') {
       this.offset = 0;
-      // this.loadPokemon(); Delete me
       return;
     }
  
