@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>PokeDex</ion-title>
+    <ion-img class="img-logo" src="..\assets\Pokedex _Logo.png" alt="Pokedex Logo" ></ion-img>
     <ion-buttons slot="end">
       <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="tertiary">
 
   <div *ngIf="details">
 
@@ -21,7 +21,7 @@
 
     
 
-    <ion-card>
+    <ion-card color="secondary">
 
       <ion-card-header>
         <ion-button expand="block" color="primary">Add to favourites</ion-button>
@@ -33,12 +33,12 @@
 
       <ion-card-content>
         <ion-list lines="full">
-          <ion-item>
-            <ion-label text-wrap><b>Abilities:</b> <span *ngFor="let a of details.abilities; let isLast = last" class="ion-text-capitalize">
+          <ion-item color="secondary">
+            <ion-label text-wrap ><b>Abilities:</b> <span *ngFor="let a of details.abilities; let isLast = last" class="ion-text-capitalize">
                 {{ a.ability.name }}{{ !isLast ? ',' : '' }}
               </span></ion-label>
           </ion-item>
-            <ion-item *ngFor="let s of details.stats" class="ion-text-capitalize">
+            <ion-item *ngFor="let s of details.stats" class="ion-text-capitalize" color="secondary">
             <ion-label slot="start"><b>{{ s.stat.name }}:</b></ion-label>
             <ion-label slot="end">
               {{ s.base_stat }}
