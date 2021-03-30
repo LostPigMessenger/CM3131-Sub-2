@@ -1,3 +1,4 @@
+//This code was adapted from the tutorial by Simon Grimm, referenced in the report.
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../services/pokemon.service';

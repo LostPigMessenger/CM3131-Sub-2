@@ -1,4 +1,4 @@
-//A large part of this code was adapted from the tutorial by Simon Grimm, referenced in the report.
+//This code was adapted from the tutorial by Simon Grimm, referenced in the report.
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
