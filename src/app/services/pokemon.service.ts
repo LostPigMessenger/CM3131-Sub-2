@@ -20,11 +20,11 @@ export class PokemonService {
     return this.http.get(`${this.baseUrl}/pokemon?offset=${offset}&limit=151`).pipe(map(result =>{
       return result['results'];
     }),
-    map(pokemon => {
-      return pokemon.map((poke, index) => {
-         poke.image = this.getPokeImage(index + offset + 1); //This gives us the pokemon sprite url according to the pokemon index. +1 since the pokemon array begins at 0 but the sprites URL begins at 1
-         poke.pokeIndex = offset + index + 1;
-         return poke;
+    map(pokemons => {
+      return pokemons.map((pokemon, index) => {
+         pokemon.image = this.getPokemonImg(index + offset + 1); //This gives us the pokemon sprite url according to the pokemon index. +1 since the pokemon array begins at 0 but the sprites URL begins at 1
+         pokemon.pokeIndex = offset + index + 1;
+         return pokemon;
       });
 
     })
@@ -32,29 +32,29 @@ export class PokemonService {
   }
 
 //This gets the URL for the pokemon sprite according to the index
-  getPokeImage(index) { 
+  getPokemonImg(index) { 
     return `${this.imageUrl}${index}.png`;
   }
 
   
   findPokemon(search) {
     return this.http.get(`${this.baseUrl}/pokemon/${search}`).pipe(
-      map(pokemon => {
-        pokemon['image'] = this.getPokeImage(pokemon['id']);
-        pokemon['pokeIndex'] = pokemon['id'];
-        return pokemon;
+      map(pokemons => {
+        pokemons['image'] = this.getPokemonImg(pokemons['id']);
+        pokemons['pokeIndex'] = pokemons['id'];
+        return pokemons;
       })
     );
   }
 
-  getPokeDetails(index) {
+  getPokemonDetails(index) {
     return this.http.get(`${this.baseUrl}/pokemon/${index}`).pipe(
-      map(poke => {
-        let sprites = Object.keys(poke['sprites']);//This transforms the keys for the pokemon sprites from the Image Url into an array
-        poke['images'] = sprites
-          .map(spriteKey => poke['sprites'][spriteKey])
+      map(pokemon => {
+        let sprites = Object.keys(pokemon['sprites']);//This transforms the keys for the pokemon sprites from the Image Url into an array
+        pokemon['images'] = sprites
+          .map(spriteKey => pokemon['sprites'][spriteKey])
           .filter(img => img);// Checks if image is null
-        return poke;
+        return pokemon;
       })
     );
   }
