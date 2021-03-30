@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-title>PokeDex</ion-title>
     <ion-buttons slot="end">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -19,21 +19,22 @@
       
     </ion-slides>
 
+    
+
     <ion-card>
 
       <ion-card-header>
-        <ion-card-title class="ion-text-capitalize">#{{ details.id }} {{ details.name }}
-        </ion-card-title>
-          <ion-label>Type:</ion-label>
-          <ion-label color="primary" *ngFor="let t of details.types; let isLast = last" class="ion-text-capitalize"> {{ t.type.name }}{{ !isLast ? ',' : '' }} </ion-label>
-          <ion-label class="ion-text-capitalize"><p>Weight: {{ details.weight }} lbs</p> </ion-label>
+        <ion-button expand="block" color="primary">Add to favourites</ion-button>
+        <ion-card-title class="ion-text-capitalize">#{{ details.id }} {{ details.name }}</ion-card-title>
+        <ion-label>Type:</ion-label>
+        <ion-label color="primary" *ngFor="let t of details.types; let isLast = last" class="ion-text-capitalize"> {{ t.type.name }}{{ !isLast ? ',' : '' }} </ion-label>
+        <ion-label class="ion-text-capitalize"><p>Weight: {{ details.weight }} lbs</p> </ion-label>
       </ion-card-header>
 
       <ion-card-content>
         <ion-list lines="full">
           <ion-item>
-            <ion-label text-wrap><b>Abilities:</b> <span *ngFor="let a of details.abilities; let isLast = last"
-                class="ion-text-capitalize">
+            <ion-label text-wrap><b>Abilities:</b> <span *ngFor="let a of details.abilities; let isLast = last" class="ion-text-capitalize">
                 {{ a.ability.name }}{{ !isLast ? ',' : '' }}
               </span></ion-label>
           </ion-item>
