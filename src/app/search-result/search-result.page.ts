@@ -18,8 +18,6 @@ export class SearchResultPage implements OnInit {
 
   ngOnInit() {
 
-    
-
     let index = this.route.snapshot.paramMap.get('index');//This gives us the pokemon that was chosen from the search result based on its index
     this.pokeService.getPokeDetails(index).subscribe(details => {
       console.log('Details: ', details);
