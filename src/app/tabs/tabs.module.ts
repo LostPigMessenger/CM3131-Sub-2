@@ -9,7 +9,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -19,11 +19,6 @@ const routes: Routes = [
       {
         path: 'tab2',
         loadChildren: () => import('../favourites/favourites.module').then( m => m.FavouritesPageModule)
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
       }
     ]
   }
