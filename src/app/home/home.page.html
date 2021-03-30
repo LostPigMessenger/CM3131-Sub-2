@@ -6,7 +6,7 @@
 
 <ion-content [fullscreen]="true" color="tertiary">
   
-  <ion-searchbar placeholder="Search Pokemon Name" (ionChange)="onSearchChange($event)" [(ngModel)]="searchInput" color="secondary"></ion-searchbar>
+  <ion-searchbar placeholder="Search Pokemon Name" (ionChange)="onSearchUpdate($event)" [(ngModel)]="searchInput" color="secondary"></ion-searchbar>
 
   <ion-list color="secondary" *ngIf="searchInput !== ''">
     <ion-item *ngFor="let poke of pokemon;" [routerLink]="poke.pokeIndex" color="secondary">

@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
     })
   }
   
-  onSearchChange(e) {
+  onSearchUpdate(e) {
     let value = e.detail.value;
  
     if (value == '') {
