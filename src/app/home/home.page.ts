@@ -1,6 +1,7 @@
 //This code was adapted from the tutorial by Simon Grimm, referenced in the report.
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services/pokemon.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,13 @@ import { PokemonService } from '../services/pokemon.service';
 export class HomePage implements OnInit {
 
   offset = 0; //for the pokemon list
-  pokemon = [] //pokemon array
+  pokemon = []; //pokemon array
   public searchInput='';
+  key: any;
 
-  constructor(private pokeService: PokemonService) {}
+
+
+  constructor(private pokeService: PokemonService, private storage: Storage) {}
 
   ngOnInit()  {
     this.loadPokemon();
@@ -39,6 +43,11 @@ export class HomePage implements OnInit {
     }, err => {
       this.pokemon = [];
     });
+  }
+
+  SavePokeInfo(){
+    this.storage.set('key',this.pokemon);
+
   }
 
   

@@ -10,7 +10,7 @@
   <ion-searchbar placeholder="Search Pokemon Name" (ionChange)="onSearchUpdate($event)" [(ngModel)]="searchInput" color="secondary"></ion-searchbar>
 
   <ion-list color="secondary" *ngIf="searchInput !== ''">
-    <ion-item *ngFor="let poke of pokemon;" [routerLink]="poke.pokeIndex" color="secondary">
+    <ion-item *ngFor="let poke of pokemon;" [routerLink]="poke.pokeIndex" color="secondary" (click)="SavePokeInfo()"> <!--Add on click here that stores the values and adds it to list below. Ionic storage. Probs simplest way.-->
       <ion-avatar slot="start">
         <img [src]="poke.image" style="background: #444141;">
       </ion-avatar>
@@ -26,6 +26,17 @@
     <ion-card-title>Recent Searches</ion-card-title>
   </ion-card-header>
 
+  <ion-list color="secondary">
+    <ion-item *ngFor="let poke of pokemon;" [routerLink]="poke.pokeIndex" color="secondary" (click)="SavePokeInfo()"> <!--Add on click here that stores the values and adds it to list below. Ionic storage. Probs simplest way.-->
+      <ion-avatar slot="start">
+        <img [src]="poke.image" style="background: #444141;">
+      </ion-avatar>
+      <ion-label class="ion-text-capitalize" >
+        <h2>{{ poke.name }}</h2>
+        <p>#{{ poke.pokeIndex }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
   
 
 </ion-card>
