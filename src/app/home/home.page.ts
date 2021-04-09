@@ -45,7 +45,7 @@ export class HomePage implements OnInit {
     });
   }
 
-  SavePokeInfo(){
+  SavePokeInfo(){ //Try uninstalling storage angular and installing --save ionic storage
     this.storage.set('key',this.pokemon);
 
   }
