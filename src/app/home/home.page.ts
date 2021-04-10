@@ -14,6 +14,7 @@ export class HomePage implements OnInit {
   pokemon = []; //pokemon array
   public searchInput='';
   storedPokemons: any = [];
+  searchResultSave: any;
 
   constructor(private pokeService: PokemonService, private storage: Storage) {}
 
@@ -24,9 +25,9 @@ export class HomePage implements OnInit {
   }
 
   loadPokemon(){
-    this.pokeService.getPokemon(this.offset).subscribe(res => {
-      console.log('result:', res);
-      this.pokemon = res;
+    this.pokeService.getPokemon(this.offset).subscribe(result => {
+      console.log('result:', result);
+      this.pokemon = result;
     })
   }
   
@@ -38,8 +39,9 @@ export class HomePage implements OnInit {
       return;
     }
  
-    this.pokeService.findPokemon(value).subscribe(res => {
-      this.pokemon = [res];
+    this.pokeService.findPokemon(value).subscribe(result => {
+      this.pokemon = [result];
+      this.searchResultSave = result;//This contains the details of the pokemon from the search result so they can be later used for storage in addRecentSearch()
     }, err => {
       this.pokemon = [];
     });
@@ -48,7 +50,7 @@ export class HomePage implements OnInit {
   async addRecentSearch(){ //What to do next: This saves it as an array, should be saved as object inside array, I think. Scratch that, this makes a new array for every object [{...}], instead it should be one array with multiple objects. Add one more variable to store the object and then chuck that in an array. Should display fine on home page then.
     
     
-    this.storedPokemons.push(this.pokemon);
+    this.storedPokemons.push(this.searchResultSave);
     await this.storage.set('savedPokemon',this.storedPokemons);
     console.log(this.storedPokemons)
 

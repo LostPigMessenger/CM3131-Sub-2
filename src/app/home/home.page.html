@@ -27,13 +27,13 @@
   </ion-card-header>
 
   <ion-list color="secondary">
-    <ion-item *ngFor="let stored of storedPokemons; let i = index" [routerLink]="poke.pokeIndex" color="secondary"> <!--Add on click here that stores the values and adds it to list below. Ionic storage. Probs simplest way.-->
+    <ion-item *ngFor="let stored of storedPokemons;" [routerLink]="stored.pokeIndex" color="secondary"> <!--Add on click here that stores the values and adds it to list below. Ionic storage. Probs simplest way.-->
       <ion-avatar slot="start">
-        <img [src]="poke.image" style="background: #444141;">
+        <img [src]="stored.image" style="background: #444141;">
       </ion-avatar>
       <ion-label class="ion-text-capitalize" >
-        <h2>{{ poke.name }}</h2>
-        <p>#{{ poke.pokeIndex }}</p>
+        <h2>{{ stored.name }}</h2>
+        <p>#{{ stored.pokeIndex }}</p>
       </ion-label>
     </ion-item>
   </ion-list>

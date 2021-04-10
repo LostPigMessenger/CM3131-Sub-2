@@ -15,9 +15,9 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
 
-  //This gets the information from the API and turns it into an array. It's limited to getting the original 151 pokemon out of 893 total.
+  //This gets the information from the API and turns it into an array. It loads all 898 pokemon but could be limited to less.
   getPokemon(offset = 0) {
-    return this.http.get(`${this.baseUrl}/pokemon?offset=${offset}&limit=151`).pipe(map(result =>{
+    return this.http.get(`${this.baseUrl}/pokemon?offset=${offset}&limit=898`).pipe(map(result =>{
       return result['results'];
     }),
     map(pokemons => {
