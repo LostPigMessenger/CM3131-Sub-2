@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
 
   }
 
-  loadPokemon(){
+  loadPokemon(){//This loads the array of pokemon from the api
     this.pokeService.getPokemon(this.offset).subscribe(result => {
       console.log('result:', result);
       this.pokemon = result;
@@ -47,8 +47,8 @@ export class HomePage implements OnInit {
     });
   }
 
-  async addRecentSearch(){ //What to do next: This saves it as an array, should be saved as object inside array, I think. Scratch that, this makes a new array for every object [{...}], instead it should be one array with multiple objects. Add one more variable to store the object and then chuck that in an array. Should display fine on home page then.
-    
+  //This stores the data from the search result that was tapped so it can be displayed in the recent searches list
+  async addRecentSearch(){
     
     this.storedPokemons.push(this.searchResultSave);
     await this.storage.set('savedPokemon',this.storedPokemons);
