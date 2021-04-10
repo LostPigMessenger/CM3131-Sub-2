@@ -56,6 +56,12 @@ export class HomePage implements OnInit {
 
   }
 
+  async clearRecentSearches(){
+
+    this.storedPokemons.splice(0);
+    
+  }
+
   
 
 }
