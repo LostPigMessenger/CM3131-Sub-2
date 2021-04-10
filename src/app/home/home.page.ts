@@ -13,14 +13,14 @@ export class HomePage implements OnInit {
   offset = 0; //for the pokemon list
   pokemon = []; //pokemon array
   public searchInput='';
-  key: any;
-
-
+  storedPokemons: any = [];
 
   constructor(private pokeService: PokemonService, private storage: Storage) {}
 
-  ngOnInit()  {
+  async ngOnInit()  {
     this.loadPokemon();
+    await this.storage.create();
+
   }
 
   loadPokemon(){
@@ -45,8 +45,12 @@ export class HomePage implements OnInit {
     });
   }
 
-  SavePokeInfo(){ //Try uninstalling storage angular and installing --save ionic storage
-    this.storage.set('key',this.pokemon);
+  async addRecentSearch(){ //What to do next: This saves it as an array, should be saved as object inside array, I think. Add one more variable to store the object and then chuck that in an array. Should display fine on home page then.
+    
+    
+    this.storedPokemons.push(this.pokemon);
+    await this.storage.set('savedPokemon',this.pokemon);
+    console.log(this.storedPokemons)
 
   }
 
