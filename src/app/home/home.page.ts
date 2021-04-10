@@ -45,11 +45,11 @@ export class HomePage implements OnInit {
     });
   }
 
-  async addRecentSearch(){ //What to do next: This saves it as an array, should be saved as object inside array, I think. Add one more variable to store the object and then chuck that in an array. Should display fine on home page then.
+  async addRecentSearch(){ //What to do next: This saves it as an array, should be saved as object inside array, I think. Scratch that, this makes a new array for every object [{...}], instead it should be one array with multiple objects. Add one more variable to store the object and then chuck that in an array. Should display fine on home page then.
     
     
     this.storedPokemons.push(this.pokemon);
-    await this.storage.set('savedPokemon',this.pokemon);
+    await this.storage.set('savedPokemon',this.storedPokemons);
     console.log(this.storedPokemons)
 
   }
